@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Documentation Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 AI Documentation Assistant</h1>
+            <p class="subtitle">Simplify complex documents with AI-powered summarization and Q&amp;A</p>
+        </header>
+
+        <main>
+            <!-- Upload Section -->
+            <section class="card">
+                <div class="card-header">
+                    <h2>📄 Upload Document</h2>
+                </div>
+                <div class="card-body">
+                    <div class="upload-area" id="uploadArea">
+                        <input type="file" id="file" accept=".pdf,.doc,.docx,.txt">
+                        <label for="file" class="upload-label">
+                            <span class="upload-icon">📁</span>
+                            <span class="upload-text">Choose a file or drag it here</span>
+                            <span class="upload-hint">Supports PDF, DOCX, and TXT files</span>
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="uploadDocument()" id="uploadBtn">
+                        <span>Upload Document</span>
+                    </button>
+                    <div id="uploadStatus" class="status-message"></div>
+                    <div id="fileInfo" class="file-info"></div>
+                </div>
+            </section>
+
+            <!-- Summary Section -->
+            <section class="card">
+                <div class="card-header">
+                    <h2>📝 Document Summary</h2>
+                </div>
+                <div class="card-body">
+                    <button type="button" class="btn btn-secondary" onclick="getSummary()" id="summaryBtn">
+                        <span>Generate Summary</span>
+                    </button>
+                    <div id="summary" class="content-display"></div>
+                    <div id="summaryStats" class="stats"></div>
+                </div>
+            </section>
+
+            <!-- AI Chatbot Section -->
+            <section class="card chat-card">
+                <div class="card-header">
+                    <h2>💬 AI Chatbot</h2>
+                    <button type="button" class="btn-clear-chat" onclick="clearChat()" title="Clear chat history">
+                        🗑️ Clear
+                    </button>
+                </div>
+                <div class="card-body chat-body">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot-message">
+                            <div class="message-avatar">🤖</div>
+                            <div class="message-content">
+                                <div class="message-text">
+                                    Hello! I'm your AI documentation assistant. Upload a document and I'll help you understand it better. Ask me anything about the document!
+                                </div>
+                                <div class="message-time">Just now</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input-container">
+                        <input 
+                            type="text" 
+                            id="chatInput" 
+                            placeholder="Ask me anything about the document..." 
+                            onkeypress="handleChatKeyPress(event)"
+                            autocomplete="off"
+                        >
+                        <button type="button" class="btn btn-primary chat-send-btn" onclick="sendChatMessage()" id="chatSendBtn">
+                            <span>Send</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Powered by NLP &amp; AI • Simplifying documentation since 2024</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
